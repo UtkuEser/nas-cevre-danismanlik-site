@@ -79,16 +79,16 @@ export const SERVICES_SEO: ServiceSeo[] = [
         a: "Çevre izin ve lisansları, yıllık atık beyanları, emisyon ve deşarj bildirimleri, sıfır atık kayıtları, teknik raporlar ve denetim hazırlık dokümanları bu hizmet kapsamında yönetilmektedir.",
       },
       {
-        q: "Uşak'taki işletmeler için en sık ihtiyaç duyulan çevre hizmetleri nelerdir?",
-        a: "Uşak'ta özellikle deri, tekstil ve gıda sektöründeki işletmeler çevre izin ve lisansı, atık yönetimi, çevre beyanları ve LWG denetim danışmanlığı konularında en sık destek almaktadır.",
+        q: "İşletmeler en sık hangi çevre danışmanlığı süreçlerinde destek alır?",
+        a: "Çevre izin ve lisansı, atık yönetimi, yıllık çevre beyanları ve denetim hazırlığı işletmelerin en sık destek aldığı alanlardır. Deri, tekstil, gıda ve kimya sektöründeki üretim tesisleri bu konularda kapsamlı süreç yönetimine ihtiyaç duymaktadır.",
       },
       {
-        q: "Çevre danışmanlığı hizmeti ne sıklıkla sunulur?",
-        a: "Hizmet kapsamı işletmenizin ihtiyacına göre yapılandırılır. Aylık periyodik takip, çeyrek dönem kontrolleri veya proje bazlı destek biçimlerinde sunulabilir.",
+        q: "Çevre danışmanlığı süreci düzenli takip gerektirir mi?",
+        a: "Evet. Çevre izinleri, beyanlar ve mevzuat değişiklikleri belirli dönemlerde güncellenmektedir. Hizmet kapsamı işletmenizin ihtiyacına göre yapılandırılır; aylık periyodik takip, çeyrek dönem kontrolleri veya proje bazlı destek biçimlerinde sunulabilir.",
       },
       {
-        q: "Başka şehirlerdeki işletmelere de hizmet veriliyor mu?",
-        a: "Evet. Nas Çevre Danışmanlık, Uşak merkezli olmakla birlikte Kütahya, Afyonkarahisar, Denizli, Manisa ve İzmir gibi çevre illerdeki işletmelere yerinde ve uzaktan destek sunmaktadır.",
+        q: "Hizmet süreci yerinde ve uzaktan yürütülebilir mi?",
+        a: "Evet. Sürecin büyük bölümü uzaktan koordineli biçimde yürütülebilmektedir. Saha değerlendirmesi, ölçüm koordinasyonu ve denetim günü desteği gerektiren durumlarda ise yerinde teknik destek de sağlanmaktadır.",
       },
     ],
   },
