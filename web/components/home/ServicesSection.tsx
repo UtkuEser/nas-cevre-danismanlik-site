@@ -1,14 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { CORE_SERVICES } from "@/lib/content";
+import { SERVICES_SEO } from "@/lib/servicesSeo";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function ServicesSection() {
   const [selected, setSelected] = useState<number | null>(null);
   const active = selected !== null ? CORE_SERVICES[selected] : null;
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  // Kart seçilince detay paneline yumuşak scroll
+  useEffect(() => {
+    if (selected !== null && detailRef.current) {
+      // Panel render olduktan sonra scroll et
+      const timer = setTimeout(() => {
+        detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 60);
+      return () => clearTimeout(timer);
+    }
+  }, [selected]);
+
+  function handleCardClick(i: number) {
+    setSelected((prev) => (prev === i ? null : i));
+  }
 
   return (
     <section id="hizmetler" className="bg-white py-16 md:py-24">
@@ -49,23 +66,28 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Kart grid — 4 kolon */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+        {/* Kart grid — 2 kolon mobil, 4 kolon desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
           {CORE_SERVICES.map((service, i) => (
             <ServiceCard
               key={service.title}
               title={service.title}
               desc={service.desc}
               index={i}
+              image={`/images/hizmetler/${i + 1}.png`}
               isSelected={selected === i}
-              onClick={() => setSelected((prev) => (prev === i ? null : i))}
+              onClick={() => handleCardClick(i)}
             />
           ))}
         </div>
 
-        {/* Detay paneli — yalnızca seçili kart varsa gösterilir */}
+        {/* Detay paneli — seçili kart varsa açılır */}
         {active !== null && (
-          <div className="bg-[#F7F7F5] border border-[#E2E2E2] rounded-2xl overflow-hidden">
+          <div
+            ref={detailRef}
+            style={{ scrollMarginTop: "88px" }}
+            className="bg-[#F7F7F5] border border-[#E2E2E2] rounded-2xl overflow-hidden"
+          >
             <div className="grid md:grid-cols-[1fr_auto] gap-0">
               <div className="p-8 md:p-10">
                 {/* Üst satır */}
@@ -107,14 +129,26 @@ export default function ServicesSection() {
                 </ul>
 
                 {/* CTA */}
-                <Link
-                  href="/basvuru"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#E8620C] hover:gap-3 transition-all duration-150"
-                  style={{ fontFamily: "Manrope, sans-serif" }}
-                >
-                  Bu hizmet için başvuru yap
-                  <ArrowRight size={16} strokeWidth={2} />
-                </Link>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/basvuru"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#E8620C] hover:gap-3 transition-all duration-150"
+                    style={{ fontFamily: "Manrope, sans-serif" }}
+                  >
+                    Bu hizmet için başvuru yap
+                    <ArrowRight size={16} strokeWidth={2} />
+                  </Link>
+                  {selected !== null && SERVICES_SEO[selected] && (
+                    <Link
+                      href={`/hizmetler/${SERVICES_SEO[selected].slug}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#4B4B4B] hover:text-[#1C1C1C] transition-colors"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      Detaylı bilgi al
+                      <ArrowRight size={14} strokeWidth={1.5} />
+                    </Link>
+                  )}
+                </div>
               </div>
 
               {/* Sağ dekor paneli */}

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { FOOTER, CORE_SERVICES, SECTORS } from "@/lib/content";
+import { FOOTER } from "@/lib/content";
+import { SERVICES_SEO } from "@/lib/servicesSeo";
+import { REGIONS_SEO } from "@/lib/regionsSeo";
+import { BLOG_POSTS } from "@/lib/blogSeo";
 
 export default function Footer() {
   return (
@@ -32,10 +35,10 @@ export default function Footer() {
               Hizmetler
             </h4>
             <ul className="space-y-2.5">
-              {CORE_SERVICES.slice(0, 6).map((s) => (
-                <li key={s.title}>
+              {SERVICES_SEO.slice(0, 6).map((s) => (
+                <li key={s.slug}>
                   <Link
-                    href="/#hizmetler"
+                    href={`/hizmetler/${s.slug}`}
                     className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
                     style={{ fontFamily: "Inter, sans-serif" }}
                   >
@@ -46,27 +49,51 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kolon 3 — Sektörler */}
-          <div>
-            <h4
-              className="text-white font-bold text-sm uppercase tracking-wider mb-5"
-              style={{ fontFamily: "Manrope, sans-serif" }}
-            >
-              Sektörler
-            </h4>
-            <ul className="space-y-2.5">
-              {SECTORS.slice(0, 7).map((s) => (
-                <li key={s}>
-                  <Link
-                    href="/#sektorler"
-                    className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Kolon 3 — Bölgeler + Blog */}
+          <div className="flex flex-col gap-8">
+            <div>
+              <h4
+                className="text-white font-bold text-sm uppercase tracking-wider mb-5"
+                style={{ fontFamily: "Manrope, sans-serif" }}
+              >
+                Bölgeler
+              </h4>
+              <ul className="space-y-2.5">
+                {REGIONS_SEO.map((r) => (
+                  <li key={r.slug}>
+                    <Link
+                      href={`/bolgeler/${r.slug}`}
+                      className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      {r.city}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4
+                className="text-white font-bold text-sm uppercase tracking-wider mb-5"
+                style={{ fontFamily: "Manrope, sans-serif" }}
+              >
+                Blog
+              </h4>
+              <ul className="space-y-2.5">
+                {BLOG_POSTS.slice(0, 4).map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      href={`/blog/${p.slug}`}
+                      className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors leading-snug"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      {p.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Kolon 4 — İletişim */}
