@@ -87,15 +87,23 @@ export default function BasvuruPage() {
               <ul className="flex flex-col gap-4">
                 <li className="flex items-center gap-3">
                   <Phone size={16} className="text-[#E8620C] shrink-0" strokeWidth={1.5} />
-                  <span className="text-[#4B4B4B] text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <a
+                    href="tel:+905053975054"
+                    className="text-[#4B4B4B] text-sm hover:text-[#E8620C] transition-colors"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
                     {FOOTER.contact.phone}
-                  </span>
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail size={16} className="text-[#E8620C] shrink-0" strokeWidth={1.5} />
-                  <span className="text-[#4B4B4B] text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <a
+                    href="mailto:nasmuhendislik2016@gmail.com"
+                    className="text-[#4B4B4B] text-sm hover:text-[#E8620C] transition-colors"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
                     {FOOTER.contact.email}
-                  </span>
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <MapPin size={16} className="text-[#E8620C] shrink-0" strokeWidth={1.5} />

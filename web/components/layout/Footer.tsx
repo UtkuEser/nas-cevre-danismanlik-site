@@ -82,15 +82,23 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={16} className="text-[#E8620C] mt-0.5 shrink-0" />
-                <span className="text-[#9A9A9A] text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
+                <a
+                  href="tel:+905053975054"
+                  className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
                   {FOOTER.contact.phone}
-                </span>
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} className="text-[#E8620C] mt-0.5 shrink-0" />
-                <span className="text-[#9A9A9A] text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
+                <a
+                  href="mailto:nasmuhendislik2016@gmail.com"
+                  className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
                   {FOOTER.contact.email}
-                </span>
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#E8620C] mt-0.5 shrink-0" />
@@ -99,6 +107,16 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
+            <div className="mt-4">
+              <iframe
+                title="Nas Çevre Danışmanlık Konum"
+                src="https://www.google.com/maps?q=Fevzi%20%C3%87akmak%2C%203.%20Ray%20Sk.%201%2F3%2C%2064300%20U%C5%9Fak%20Merkez%2FU%C5%9Fak&output=embed"
+                className="w-full h-[120px] md:h-[120px] rounded-lg border border-[#2E2E2E] opacity-80"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
 

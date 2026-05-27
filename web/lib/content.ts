@@ -244,9 +244,9 @@ export const FOOTER = {
   description:
     "Nas Çevre Danışmanlık Mühendislik; çevre mevzuatı, izin süreçleri, teknik raporlar, atık yönetimi ve uluslararası denetim danışmanlığı alanlarında işletmelere profesyonel destek sağlar.",
   contact: {
-    phone: "+90 (xxx) xxx xx xx",
-    email: "info@nascevre.com",
-    address: "Türkiye",
+    phone: "+90 505 397 50 54",
+    email: "nasmuhendislik2016@gmail.com",
+    address: "Fevzi Çakmak, 3. Ray Sk. 1/3, 64300 Uşak Merkez/Uşak",
   },
 };
 

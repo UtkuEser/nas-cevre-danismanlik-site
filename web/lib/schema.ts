@@ -48,9 +48,18 @@ export function localBusinessSchema() {
     url: SITE_URL,
     image: LOGO_URL,
     description: siteConfig.description,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.addressStreet,
+      addressLocality: siteConfig.addressLocality,
+      addressRegion: siteConfig.addressRegion,
+      postalCode: siteConfig.postalCode,
+      addressCountry: siteConfig.addressCountry,
+    },
     areaServed: AREA_SERVED,
     priceRange: "$$",
-    email: "info@nascevre.com",
   };
 }
 
