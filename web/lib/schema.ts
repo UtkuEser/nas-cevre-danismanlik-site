@@ -2,7 +2,7 @@ import { siteConfig } from "@/lib/siteConfig";
 
 const SITE_URL = siteConfig.url;
 const ORG_NAME = siteConfig.name;
-const LOGO_URL = `${SITE_URL}/images/logo/nas-logo.png`;
+const LOGO_URL = `${SITE_URL}${siteConfig.logo}`;
 const AREA_SERVED = [
   "Uşak",
   "Kütahya",
