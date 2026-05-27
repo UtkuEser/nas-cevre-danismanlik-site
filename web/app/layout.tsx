@@ -24,12 +24,9 @@ export const metadata: Metadata = {
   description:
     "Nas Çevre Danışmanlık Mühendislik; çevre danışmanlığı, çevre izinleri, teknik raporlar, atık yönetimi, toprak koruma projeleri, LWG ve yurtdışı denetim danışmanlığı alanlarında profesyonel destek sağlar.",
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   openGraph: {
     title: "Nas Çevre Danışmanlık Mühendislik",
