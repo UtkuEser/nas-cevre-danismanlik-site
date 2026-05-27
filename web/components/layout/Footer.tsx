@@ -3,7 +3,6 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { FOOTER } from "@/lib/content";
 import { SERVICES_SEO } from "@/lib/servicesSeo";
 import { REGIONS_SEO } from "@/lib/regionsSeo";
-import { BLOG_POSTS } from "@/lib/blogSeo";
 
 export default function Footer() {
   return (
@@ -49,51 +48,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Kolon 3 — Bölgeler + Blog */}
-          <div className="flex flex-col gap-8">
-            <div>
-              <h4
-                className="text-white font-bold text-sm uppercase tracking-wider mb-5"
-                style={{ fontFamily: "Manrope, sans-serif" }}
-              >
-                Bölgeler
-              </h4>
-              <ul className="space-y-2.5">
-                {REGIONS_SEO.map((r) => (
-                  <li key={r.slug}>
-                    <Link
-                      href={`/bolgeler/${r.slug}`}
-                      className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
-                      style={{ fontFamily: "Inter, sans-serif" }}
-                    >
-                      {r.city}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4
-                className="text-white font-bold text-sm uppercase tracking-wider mb-5"
-                style={{ fontFamily: "Manrope, sans-serif" }}
-              >
-                Blog
-              </h4>
-              <ul className="space-y-2.5">
-                {BLOG_POSTS.slice(0, 4).map((p) => (
-                  <li key={p.slug}>
-                    <Link
-                      href={`/blog/${p.slug}`}
-                      className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors leading-snug"
-                      style={{ fontFamily: "Inter, sans-serif" }}
-                    >
-                      {p.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Kolon 3 — Bölgeler */}
+          <div>
+            <h4
+              className="text-white font-bold text-sm uppercase tracking-wider mb-5"
+              style={{ fontFamily: "Manrope, sans-serif" }}
+            >
+              Bölgeler
+            </h4>
+            <ul className="space-y-2.5">
+              {REGIONS_SEO.map((r) => (
+                <li key={r.slug}>
+                  <Link
+                    href={`/bolgeler/${r.slug}`}
+                    className="text-[#9A9A9A] text-sm hover:text-[#E8620C] transition-colors"
+                    style={{ fontFamily: "Inter, sans-serif" }}
+                  >
+                    {r.city}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Kolon 4 — İletişim */}

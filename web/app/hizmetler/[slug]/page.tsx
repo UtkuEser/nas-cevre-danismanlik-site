@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SERVICES_SEO } from "@/lib/servicesSeo";
-import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, buildMetadata } from "@/lib/seo";
 import FAQItem from "@/components/ui/FAQItem";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,13 +30,38 @@ export default async function ServicePage({ params }: PageProps) {
   const service = SERVICES_SEO.find((s) => s.slug === slug);
   if (!service) notFound();
 
+  const relatedServices = service.relatedSlugs
+    .map((rs) => SERVICES_SEO.find((s) => s.slug === rs))
+    .filter(Boolean);
+
+  const pageUrl = `${SITE_URL}/hizmetler/${service.slug}`;
+  const schemas = [
+    serviceSchema({ name: service.title, description: service.metaDescription, url: pageUrl }),
+    faqSchema(service.faqs),
+    breadcrumbSchema([
+      { name: "Ana Sayfa", url: SITE_URL },
+      { name: "Hizmetler", url: `${SITE_URL}/#hizmetler` },
+      { name: service.title, url: pageUrl },
+    ]),
+  ];
+
   return (
     <main className="pt-16">
+      {schemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
 
       {/* Hero */}
       <div className="bg-[#F7F7F5] border-b border-[#E2E2E2]">
         <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-16">
-          <nav className="flex items-center gap-2 text-xs text-[#8A8A8A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+          <nav
+            className="flex items-center gap-2 text-xs text-[#8A8A8A] mb-6"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <Link href="/" className="hover:text-[#E8620C] transition-colors">Ana Sayfa</Link>
             <span>/</span>
             <Link href="/#hizmetler" className="hover:text-[#E8620C] transition-colors">Hizmetler</Link>
@@ -52,16 +78,22 @@ export default async function ServicePage({ params }: PageProps) {
             </span>
           </div>
           <h1
-            className="text-[28px] md:text-[40px] font-extrabold text-[#1C1C1C] leading-snug mb-5 max-w-[680px]"
+            className="text-[28px] md:text-[40px] font-extrabold text-[#1C1C1C] leading-snug mb-5 max-w-[720px]"
             style={{ fontFamily: "Manrope, sans-serif" }}
           >
-            {service.title}
+            {service.h1}
           </h1>
           <p
-            className="text-[#4B4B4B] text-base md:text-lg leading-relaxed mb-8 max-w-[600px]"
+            className="text-[#4B4B4B] text-base md:text-lg leading-relaxed mb-3 max-w-[640px]"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            {service.intro}
+            {service.introParagraph1}
+          </p>
+          <p
+            className="text-[#4B4B4B] text-base leading-relaxed mb-8 max-w-[640px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            {service.introParagraph2}
           </p>
           <Link
             href="/basvuru"
@@ -87,16 +119,27 @@ export default async function ServicePage({ params }: PageProps) {
               >
                 Hizmet Kapsamı
               </h2>
-              <div className="w-10 h-0.5 bg-[#E8620C] mb-5" />
-              <p
-                className="text-[#4B4B4B] text-base leading-relaxed"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                {service.scope}
-              </p>
+              <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
+              <ul className="flex flex-col gap-3">
+                {service.scopeItems.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2
+                      size={17}
+                      className="text-[#E8620C] mt-0.5 shrink-0"
+                      strokeWidth={1.5}
+                    />
+                    <span
+                      className="text-[#4B4B4B] text-base leading-snug"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </section>
 
-            {/* Hangi işletmeler */}
+            {/* Hangi İşletmeler */}
             <section className="mb-12">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
@@ -113,7 +156,7 @@ export default async function ServicePage({ params }: PageProps) {
               </p>
             </section>
 
-            {/* Süreç */}
+            {/* Süreç — 4 adım */}
             <section className="mb-12">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
@@ -121,17 +164,39 @@ export default async function ServicePage({ params }: PageProps) {
               >
                 Süreç Nasıl İlerler?
               </h2>
-              <div className="w-10 h-0.5 bg-[#E8620C] mb-5" />
-              <p
-                className="text-[#4B4B4B] text-base leading-relaxed"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-                {service.process}
-              </p>
+              <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
+              <div className="flex flex-col gap-4">
+                {service.processSteps.map((step, i) => (
+                  <div key={step.title} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="w-8 h-8 rounded-full bg-[#E8620C] text-white text-sm font-bold flex items-center justify-center shrink-0" style={{ fontFamily: "Manrope, sans-serif" }}>
+                        {i + 1}
+                      </div>
+                      {i < service.processSteps.length - 1 && (
+                        <div className="w-px flex-1 bg-[#E2E2E2] mt-2" />
+                      )}
+                    </div>
+                    <div className="pb-4">
+                      <p
+                        className="font-bold text-[#1C1C1C] text-base mb-1"
+                        style={{ fontFamily: "Manrope, sans-serif" }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="text-[#4B4B4B] text-sm leading-relaxed"
+                        style={{ fontFamily: "Inter, sans-serif" }}
+                      >
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </section>
 
             {/* Nas Çevre desteği */}
-            <section className="mb-14 bg-[#F7F7F5] border border-[#E2E2E2] rounded-xl p-6 md:p-8">
+            <section className="mb-12 bg-[#F7F7F5] border border-[#E2E2E2] rounded-xl p-6 md:p-8">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
                 style={{ fontFamily: "Manrope, sans-serif" }}
@@ -139,23 +204,15 @@ export default async function ServicePage({ params }: PageProps) {
                 Nas Çevre Bu Süreçte Nasıl Destek Sağlar?
               </h2>
               <p
-                className="text-[#4B4B4B] text-base leading-relaxed mb-6"
+                className="text-[#4B4B4B] text-base leading-relaxed"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
                 {service.nasSupport}
               </p>
-              <ul className="flex flex-col gap-2.5">
-                {["Mevzuata uygun süreç yönetimi", "Yasal sürelerinin takibi", "Teknik doküman hazırlama", "Yetkili makam koordinasyonu"].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5">
-                    <CheckCircle2 size={15} className="text-[#E8620C] shrink-0" strokeWidth={1.5} />
-                    <span className="text-[#4B4B4B] text-sm" style={{ fontFamily: "Inter, sans-serif" }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </section>
 
             {/* SSS */}
-            <section className="mb-14">
+            <section className="mb-12">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-6"
                 style={{ fontFamily: "Manrope, sans-serif" }}
@@ -166,6 +223,43 @@ export default async function ServicePage({ params }: PageProps) {
                 <FAQItem key={faq.q} q={faq.q} a={faq.a} />
               ))}
             </section>
+
+            {/* İlgili Hizmetler */}
+            {relatedServices.length > 0 && (
+              <section className="mb-14">
+                <h2
+                  className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
+                  style={{ fontFamily: "Manrope, sans-serif" }}
+                >
+                  İlgili Hizmetler
+                </h2>
+                <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {relatedServices.map((rs) => {
+                    if (!rs) return null;
+                    return (
+                      <Link
+                        key={rs.slug}
+                        href={`/hizmetler/${rs.slug}`}
+                        className="flex items-center justify-between gap-3 p-4 border border-[#E2E2E2] rounded-xl hover:border-[#E8620C] hover:bg-[#FFF8F4] transition-colors group"
+                      >
+                        <span
+                          className="text-[#1C1C1C] text-sm font-semibold group-hover:text-[#E8620C] transition-colors"
+                          style={{ fontFamily: "Manrope, sans-serif" }}
+                        >
+                          {rs.title}
+                        </span>
+                        <ArrowRight
+                          size={15}
+                          className="text-[#8A8A8A] group-hover:text-[#E8620C] shrink-0 transition-colors"
+                          strokeWidth={1.5}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-[#1C1C1C] rounded-xl">

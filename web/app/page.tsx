@@ -7,10 +7,19 @@ import ProcessSection from "@/components/home/ProcessSection";
 import WhyNasSection from "@/components/home/WhyNasSection";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
+import { organizationSchema, localBusinessSchema } from "@/lib/schema";
 
 export default function HomePage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
       <HeroSection />
       <TrustMessageSection />
       <ServicesSection />

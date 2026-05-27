@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Building2 } from "lucide-react";
 import { REGIONS_SEO } from "@/lib/regionsSeo";
 import { SERVICES_SEO } from "@/lib/servicesSeo";
-import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, buildMetadata } from "@/lib/seo";
+import FAQItem from "@/components/ui/FAQItem";
+import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,13 +31,42 @@ export default async function RegionPage({ params }: PageProps) {
   const region = REGIONS_SEO.find((r) => r.slug === slug);
   if (!region) notFound();
 
+  const nearbyRegions = region.nearbyRegionSlugs
+    .map((rs) => REGIONS_SEO.find((r) => r.slug === rs))
+    .filter(Boolean);
+
+  const pageUrl = `${SITE_URL}/bolgeler/${region.slug}`;
+  const schemas = [
+    serviceSchema({
+      name: `${region.city} Çevre Danışmanlık Hizmetleri`,
+      description: region.metaDescription,
+      url: pageUrl,
+    }),
+    faqSchema(region.faqs),
+    breadcrumbSchema([
+      { name: "Ana Sayfa", url: SITE_URL },
+      { name: "Bölgeler", url: `${SITE_URL}/bolgeler` },
+      { name: region.city, url: pageUrl },
+    ]),
+  ];
+
   return (
     <main className="pt-16">
+      {schemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
 
       {/* Hero */}
       <div className="bg-[#F7F7F5] border-b border-[#E2E2E2]">
         <div className="max-w-[1200px] mx-auto px-6 py-12 md:py-16">
-          <nav className="flex items-center gap-2 text-xs text-[#8A8A8A] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+          <nav
+            className="flex items-center gap-2 text-xs text-[#8A8A8A] mb-6"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <Link href="/" className="hover:text-[#E8620C] transition-colors">Ana Sayfa</Link>
             <span>/</span>
             <span className="text-[#4B4B4B]">Bölgeler</span>
@@ -52,16 +83,22 @@ export default async function RegionPage({ params }: PageProps) {
             </span>
           </div>
           <h1
-            className="text-[28px] md:text-[40px] font-extrabold text-[#1C1C1C] leading-snug mb-5 max-w-[680px]"
+            className="text-[28px] md:text-[40px] font-extrabold text-[#1C1C1C] leading-snug mb-5 max-w-[720px]"
             style={{ fontFamily: "Manrope, sans-serif" }}
           >
-            {region.city} Çevre Danışmanlık Hizmetleri
+            {region.h1}
           </h1>
           <p
-            className="text-[#4B4B4B] text-base md:text-lg leading-relaxed mb-8 max-w-[600px]"
+            className="text-[#4B4B4B] text-base md:text-lg leading-relaxed mb-3 max-w-[640px]"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            {region.intro}
+            {region.introParagraph1}
+          </p>
+          <p
+            className="text-[#4B4B4B] text-base leading-relaxed mb-8 max-w-[640px]"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            {region.introParagraph2}
           </p>
           <Link
             href="/basvuru"
@@ -79,39 +116,60 @@ export default async function RegionPage({ params }: PageProps) {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="max-w-[760px]">
 
-            {/* Hangi işletmeler */}
+            {/* Neden Önemlidir */}
             <section className="mb-12">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
                 style={{ fontFamily: "Manrope, sans-serif" }}
               >
-                {region.city}&apos;da Çevre Danışmanlığı Hangi İşletmeler İçin Önemlidir?
+                Yerel Mevzuat Uzmanlığı Neden Önemlidir?
               </h2>
               <div className="w-10 h-0.5 bg-[#E8620C] mb-5" />
               <p
                 className="text-[#4B4B4B] text-base leading-relaxed"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
-                {region.relevantBusinesses}
+                {region.whyImportant}
               </p>
             </section>
 
-            {/* Sunulan hizmetler */}
+            {/* Öncelikli Sektörler */}
             <section className="mb-12">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
                 style={{ fontFamily: "Manrope, sans-serif" }}
               >
-                Sunulan Çevre Danışmanlık Hizmetleri
+                Hangi İşletmeler İçin Gereklidir?
               </h2>
-              <div className="w-10 h-0.5 bg-[#E8620C] mb-5" />
-              <p
-                className="text-[#4B4B4B] text-base leading-relaxed mb-6"
-                style={{ fontFamily: "Inter, sans-serif" }}
+              <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
+              <ul className="flex flex-col gap-3">
+                {region.sectors.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2
+                      size={17}
+                      className="text-[#E8620C] mt-0.5 shrink-0"
+                      strokeWidth={1.5}
+                    />
+                    <span
+                      className="text-[#4B4B4B] text-base leading-snug"
+                      style={{ fontFamily: "Inter, sans-serif" }}
+                    >
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Sunulan Hizmetler */}
+            <section className="mb-12">
+              <h2
+                className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
+                style={{ fontFamily: "Manrope, sans-serif" }}
               >
-                {region.servicesText}
-              </p>
-              {/* İlgili hizmet linkleri */}
+                Hizmet Kapsamı
+              </h2>
+              <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
               <div className="grid sm:grid-cols-2 gap-3">
                 {SERVICES_SEO.map((service) => (
                   <Link
@@ -125,7 +183,10 @@ export default async function RegionPage({ params }: PageProps) {
                     >
                       {service.title}
                     </span>
-                    <ArrowRight size={14} className="text-[#8A8A8A] group-hover:text-[#E8620C] shrink-0 transition-colors" />
+                    <ArrowRight
+                      size={14}
+                      className="text-[#8A8A8A] group-hover:text-[#E8620C] shrink-0 transition-colors"
+                    />
                   </Link>
                 ))}
               </div>
@@ -149,12 +210,12 @@ export default async function RegionPage({ params }: PageProps) {
             </section>
 
             {/* Nas Çevre yaklaşımı */}
-            <section className="mb-14 bg-[#F7F7F5] border border-[#E2E2E2] rounded-xl p-6 md:p-8">
+            <section className="mb-12 bg-[#F7F7F5] border border-[#E2E2E2] rounded-xl p-6 md:p-8">
               <h2
                 className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
                 style={{ fontFamily: "Manrope, sans-serif" }}
               >
-                Nas Çevre ile Süreç Yönetimi
+                Nas Çevre ile Yerel Süreç Yönetimi
               </h2>
               <p
                 className="text-[#4B4B4B] text-base leading-relaxed"
@@ -163,6 +224,63 @@ export default async function RegionPage({ params }: PageProps) {
                 {region.nasApproach}
               </p>
             </section>
+
+            {/* SSS */}
+            <section className="mb-12">
+              <h2
+                className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-6"
+                style={{ fontFamily: "Manrope, sans-serif" }}
+              >
+                Sık Sorulan Sorular
+              </h2>
+              {region.faqs.map((faq) => (
+                <FAQItem key={faq.q} q={faq.q} a={faq.a} />
+              ))}
+            </section>
+
+            {/* Yakın Bölgeler */}
+            {nearbyRegions.length > 0 && (
+              <section className="mb-14">
+                <h2
+                  className="text-xl md:text-2xl font-extrabold text-[#1C1C1C] mb-4"
+                  style={{ fontFamily: "Manrope, sans-serif" }}
+                >
+                  Yakın Bölgelerde Teknik Destek
+                </h2>
+                <div className="w-10 h-0.5 bg-[#E8620C] mb-6" />
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {nearbyRegions.map((nr) => {
+                    if (!nr) return null;
+                    return (
+                      <Link
+                        key={nr.slug}
+                        href={`/bolgeler/${nr.slug}`}
+                        className="flex items-center justify-between gap-2 p-4 border border-[#E2E2E2] rounded-xl hover:border-[#E8620C] hover:bg-[#FFF8F4] transition-colors group"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Building2
+                            size={15}
+                            className="text-[#8A8A8A] group-hover:text-[#E8620C] shrink-0 transition-colors"
+                            strokeWidth={1.5}
+                          />
+                          <span
+                            className="text-[#1C1C1C] text-sm font-semibold group-hover:text-[#E8620C] transition-colors"
+                            style={{ fontFamily: "Manrope, sans-serif" }}
+                          >
+                            {nr.city}
+                          </span>
+                        </div>
+                        <ArrowRight
+                          size={14}
+                          className="text-[#8A8A8A] group-hover:text-[#E8620C] shrink-0 transition-colors"
+                          strokeWidth={1.5}
+                        />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-[#1C1C1C] rounded-xl">

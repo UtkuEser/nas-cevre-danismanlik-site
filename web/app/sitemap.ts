@@ -36,12 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const blogPages: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
-    url: `${SITE_URL}/blog/${p.slug}`,
+  const guidePages: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
+    url: `${SITE_URL}/rehber/${p.slug}`,
     lastModified: new Date(p.publishDate),
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...regionPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...regionPages, ...guidePages];
 }
