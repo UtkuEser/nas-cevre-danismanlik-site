@@ -2,6 +2,7 @@ export const NAV_LINKS = [
   { label: "Ana Sayfa", href: "/" },
   { label: "Hizmetler", href: "/#hizmetler" },
   { label: "Sektörler", href: "/#sektorler" },
+  { label: "Referanslar", href: "/#referanslar" },
   { label: "Süreç", href: "/#surec" },
   { label: "Sık Sorulan Sorular", href: "/#sss" },
 ];

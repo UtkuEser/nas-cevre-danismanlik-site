@@ -5,6 +5,7 @@ import ServicesSection from "@/components/home/ServicesSection";
 import LocalSeoSection from "@/components/home/LocalSeoSection";
 import ExpertiseSection from "@/components/home/ExpertiseSection";
 import SectorsSection from "@/components/home/SectorsSection";
+import ReferencesSection from "@/components/home/ReferencesSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import WhyNasSection from "@/components/home/WhyNasSection";
 import FAQSection from "@/components/home/FAQSection";
@@ -37,6 +38,7 @@ export default function HomePage() {
       <LocalSeoSection />
       <ExpertiseSection />
       <SectorsSection />
+      <ReferencesSection />
       <ProcessSection />
       <WhyNasSection />
       <FAQSection />

@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import { HERO } from "@/lib/content";
-import { Play, ShieldCheck, FileText, Globe } from "lucide-react";
+import { ShieldCheck, FileText, Globe } from "lucide-react";
 
 const FEATURE_BADGES = [
   { icon: ShieldCheck, label: "Çevre İzin ve Lisans" },
@@ -53,7 +53,7 @@ export default function HeroSection() {
             />
 
             {/* Video kart */}
-            <div className="relative w-full aspect-video bg-white border border-[#E2E2E2] rounded-xl overflow-hidden shadow">
+            <div className="relative w-full h-[270px] md:h-[320px] lg:h-auto lg:aspect-video bg-white border border-[#E2E2E2] rounded-xl overflow-hidden shadow">
 
               {/* Arka plan — çizgisel fabrika illüstrasyonu */}
               <svg
@@ -99,8 +99,20 @@ export default function HeroSection() {
                 <polyline points="516,220 521,226 533,213" stroke="#E8620C" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
 
+              {/* Video */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/videos/hero-video.mp4" type="video/mp4" />
+              </video>
+
               {/* Üst bar */}
-              <div className="absolute top-0 left-0 right-0 flex items-center gap-3 px-4 py-2.5 lg:px-5 lg:py-3 border-b border-[#F0F0EE]">
+              <div className="absolute top-0 left-0 right-0 flex items-center gap-3 px-4 py-2.5 lg:px-5 lg:py-3 border-b border-[#F0F0EE] bg-white/90 backdrop-blur-sm">
                 <div className="w-[3px] h-4 bg-[#E8620C] rounded-full" />
                 <span
                   className="text-[#4B4B4B] text-[10px] lg:text-[11px] font-semibold tracking-wide"
@@ -110,27 +122,13 @@ export default function HeroSection() {
                 </span>
               </div>
 
-              {/* Merkez — play butonu */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 lg:w-[60px] lg:h-[60px] rounded-full bg-[#E8620C] flex items-center justify-center shadow-md hover:bg-[#CF5409] transition-colors cursor-pointer">
-                  <Play size={18} className="text-white ml-0.5" fill="white" />
-                </div>
-              </div>
-
               {/* Alt bar */}
-              <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-2.5 lg:px-5 lg:py-3 border-t border-[#F0F0EE] bg-white/95">
+              <div className="absolute bottom-0 left-0 right-0 flex items-center px-4 py-2.5 lg:px-5 lg:py-3 border-t border-[#F0F0EE] bg-white/95 backdrop-blur-sm">
                 <span
                   className="text-[#1C1C1C] text-[11px] lg:text-xs font-bold"
                   style={{ fontFamily: "Manrope, sans-serif" }}
                 >
                   Kurumsal Tanıtım Videosu
-                </span>
-                <span
-                  className="inline-flex items-center gap-1.5 text-[10px] font-medium text-[#8A8A8A] border border-[#E2E2E2] rounded px-2 py-0.5"
-                  style={{ fontFamily: "Inter, sans-serif" }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#E8620C] opacity-60 inline-block" />
-                  Yakında
                 </span>
               </div>
             </div>

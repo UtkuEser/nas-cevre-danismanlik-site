@@ -133,7 +133,8 @@ export default function Footer() {
               KVKK / Gizlilik Politikası
             </Link>
             <span
-              className="text-[#3A3A3A] text-[13px] tracking-wide hover:text-[#E8620C] transition-colors duration-200 cursor-default select-none"
+              tabIndex={0}
+              className="text-[#3A3A3A] text-[13px] tracking-wide hover:text-[#E8620C] active:text-[#E8620C] focus:text-[#E8620C] focus:outline-none transition-colors duration-200 cursor-pointer select-none"
               style={{ fontFamily: "Manrope, sans-serif" }}
             >
               by EEK
