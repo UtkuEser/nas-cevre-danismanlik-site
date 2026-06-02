@@ -57,7 +57,7 @@ export default function Footer() {
               Bölgeler
             </h4>
             <ul className="space-y-2.5">
-              {REGIONS_SEO.map((r) => (
+              {REGIONS_SEO.slice(0, 6).map((r) => (
                 <li key={r.slug}>
                   <Link
                     href={`/bolgeler/${r.slug}`}
