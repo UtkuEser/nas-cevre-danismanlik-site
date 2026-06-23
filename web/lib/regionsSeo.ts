@@ -137,29 +137,29 @@ export const REGIONS_SEO: RegionSeo[] = [
   {
     slug: "afyonkarahisar-cevre-danismanlik",
     city: "Afyonkarahisar",
-    metaTitle: "Afyonkarahisar Çevre Danışmanlık Hizmetleri | Nas Çevre",
+    metaTitle: "Afyonkarahisar Çevre Danışmanlık | ÇED, İzin ve Atık Yönetimi",
     metaDescription:
-      "Afyonkarahisar'da mermer, doğal taş, termal otel ve gıda sektörlerine çevre danışmanlığı, izin ve lisans, atık yönetimi ve ÇED hizmetleri.",
+      "Afyonkarahisar'da çevre danışmanlığı, ÇED süreçleri, çevre izin ve lisans, atık yönetimi ve mevzuat uyumluluğu için Nas Çevre'den profesyonel destek alın.",
     h1: "Afyonkarahisar Çevre Danışmanlık Hizmetleri",
     introParagraph1:
-      "Afyonkarahisar; mermer ve doğal taş sektörünün Türkiye'deki merkezi konumundadır. Bunun yanı sıra termal turizm, gıda üretimi ve madencilik alanlarındaki yoğun sanayi faaliyeti, bölgedeki işletmeleri kapsamlı çevre yükümlülükleri kapsamına sokmaktadır. Hem üretim hem çevre mevzuatı açısından sık değişen düzenlemeler, işletmelerin sürekli takip ve profesyonel destek gerektirdiği anlamına gelmektedir.",
+      "Afyonkarahisar çevre danışmanlık alanında Nas Çevre Danışmanlık Mühendislik, ilin köklü sanayi dokusuna özgü kapsamlı bir hizmet sunar. Türkiye'nin mermer ve doğal taş üretimindeki en güçlü merkezlerinden biri olan Afyonkarahisar; OSB ve sanayi kuruluşları, maden ve kırma-eleme tesisleri, gıda üretim tesisleri ile tarım ve hayvancılık bağlantılı işletmelerin yoğunlaştığı bir sanayi hattına sahiptir. Bu sektörel çeşitlilik, Afyon çevre danışmanlığını hem teknik hem de mevzuat açısından geniş bir uzmanlık alanı haline getirmektedir.",
     introParagraph2:
-      "Nas Çevre Danışmanlık Mühendislik, Afyonkarahisar'daki işletmelere; çevre izin ve lisans başvurusu, ÇED süreci, atık yönetimi, beyan takibi ve denetim hazırlığı konularında yerinde ve uzaktan danışmanlık sunmaktadır. Bölgenin sektörel özelliklerine hâkim ekibimiz, işletmelerin yasal süreçlerini karmaşıklaşmadan yönetmelerine destek olmaktadır.",
+      "Nas Çevre Danışmanlık Mühendislik; Afyonkarahisar'daki işletmelere Afyon ÇED danışmanlığı, Afyon çevre izin ve lisans başvurusu, Afyon atık yönetimi, yıllık beyan takibi ve denetim hazırlığı konularında yerinde ve uzaktan destek sunmaktadır. Afyonkarahisar sanayi tesisleri çevre mevzuatına hâkim deneyimli ekibimiz; işletmelerin yasal süreçlerini karmaşıklaşmadan, zamanında ve doğru biçimde yönetmelerine yardımcı olmaktadır.",
     whyImportant:
-      "Afyonkarahisar'daki mermer işleme tesisleri ve taşocakları, hem maden mevzuatı hem de çevre mevzuatı kapsamında çift yükümlülük taşımaktadır. Termal oteller ise atıksu yönetimi ve tehlikeli atık beyanı konularında sıkı mevzuat gereksinimlerine tabi tutulmaktadır. Gıda tesisleri ve tarımsal işletmeler de periyodik beyan ve denetim yükümlülükleri nedeniyle düzenli danışmanlık desteğine ihtiyaç duymaktadır.",
+      "Afyonkarahisar'daki mermer işleme tesisleri, taşocakları ve maden sahaları; hem maden mevzuatı hem de çevre mevzuatı kapsamında çift yükümlülük taşıdığından Afyon çevre danışmanlığı kritik bir hizmet haline gelmektedir. OSB bünyesindeki sanayi kuruluşları ve geri dönüşüm tesisleri, Çevre İzin ve Lisans ile yıllık beyan yükümlülükleri açısından sürekli takip gerektirmektedir. Gıda üretim tesisleri ve tarım ile hayvancılık bağlantılı tesisler; organik atık yönetimi ve atıksu deşarjı konularında sıkı mevzuat gereksinimlerine tabidir. Afyonkarahisar sanayi tesisleri çevre mevzuatında yaşanan düzenli güncellemeler, işletmelerin uzman bir çevre danışmanlık firmasıyla çalışmasını zorunlu kılmaktadır.",
     sectors: [
+      "OSB ve sanayi kuruluşları",
       "Mermer ve doğal taş işleme tesisleri",
-      "Taşocakları ve maden sahaları",
+      "Maden, kırma-eleme ve taşocağı işletmeleri",
+      "Gıda üretim ve tarımsal işleme tesisleri",
+      "Geri dönüşüm ve atık yönetimi işletmeleri",
+      "Tarım ve hayvancılık bağlantılı tesisler",
       "Termal oteller ve kaplıca işletmeleri",
-      "Gıda ve tarımsal ürün işleme tesisleri",
-      "Sanayi bölgelerindeki üretim işletmeleri",
-      "Kimya ve boya işletmeleri",
-      "Tarımsal sulama ve arazi işleme projeleri",
     ],
     processText:
-      "Afyonkarahisar'daki işletmeler için çevre süreci, faaliyet türü ve kapasite sınıflandırmasıyla başlar. Mermer ve taşocakları için hem ÇED hem de çevre izni değerlendirmesi yapılır; termal oteller için atıksu ve tehlikeli atık yükümlülükleri belirlenir. Tüm beyan takvimleri işletme bazında planlanarak yıllık döngü oluşturulur. Denetim hazırlığı kapsamında eksik belgeler tespit edilip tamamlanır.",
+      "Afyonkarahisar çevre danışmanlık sürecinde ilk adım, tesisin faaliyet türü ve kapasitesinin doğru sınıflandırılmasıdır. Mermer ve taşocakları için hem Afyon ÇED danışmanlığı hem de çevre izin değerlendirmesi eş zamanlı yürütülür. OSB bünyesindeki sanayi kuruluşları için Afyon çevre izin ve lisans başvurusu, atık su, hava emisyonu ve gürültü ölçümleriyle birlikte hazırlanır. Gıda üretim tesisleri ve hayvancılık işletmeleri için Afyon atık yönetimi kapsamında organik atık, ambalaj ve tehlikeli atık ayrıştırma planı oluşturulur. Tüm yıllık beyan takvimleri işletme bazında planlanarak denetim öncesi eksiklikler önceden giderilir.",
     nasApproach:
-      "Nas Çevre Danışmanlık, Afyonkarahisar'daki işletmelere Uşak merkezinden sağlanan hızlı erişim ve periyodik saha ziyaretleriyle destek vermektedir. Bölgeye özgü sektörel deneyimimiz, işletmelere standart bir çevre danışmanlığının ötesinde, sürece özgü ve öngörülü bir hizmet sunmamıza olanak tanımaktadır.",
+      "Nas Çevre Danışmanlık, Afyonkarahisar'daki işletmelere Uşak merkezinden sağlanan hızlı saha erişimi ve periyodik ziyaretlerle destek vermektedir. Afyonkarahisar sanayi tesisleri çevre mevzuatını yakından takip eden ekibimiz; OSB ve sanayi kuruluşlarından mermer işleme tesislerine, gıda üretim tesislerinden geri dönüşüm işletmelerine kadar her sektörün kendine özgü çevre süreçlerini bütüncül bir yaklaşımla yönetmektedir. Yerel Çevre ve Şehircilik İl Müdürlüğü ile koordineli çalışma pratiğimiz, başvuruların ve beyanların sorunsuz tamamlanmasını güvence altına almaktadır.",
     nearbyRegionSlugs: [
       "usak-cevre-danismanlik",
       "kutahya-cevre-danismanlik",
@@ -167,24 +167,32 @@ export const REGIONS_SEO: RegionSeo[] = [
     ],
     faqs: [
       {
-        q: "Afyonkarahisar'da mermer ve doğal taş işletmeleri için hangi çevre süreçleri gereklidir?",
-        a: "Mermer işleme ve taşocağı faaliyetleri için proje büyüklüğüne göre ÇED veya ÇED Gerekli Değildir kararı alınması gerekir. Bunun yanı sıra çevre izni, tozuma ve gürültü yönetimi için teknik önlemler, atık taş ve çamur yönetimi ile arazi rehabilitasyon planı gerekebilir.",
+        q: "Afyonkarahisar'da hangi işletmeler çevre danışmanlığına ihtiyaç duyar?",
+        a: "Afyon çevre danışmanlığı; başta OSB ve sanayi kuruluşları, mermer ve doğal taş işleme tesisleri, maden ve kırma-eleme işletmeleri, gıda üretim tesisleri, geri dönüşüm ve atık yönetimi firmaları ile tarım ve hayvancılık bağlantılı tesisler olmak üzere çevre izni veya lisansı gerektiren tüm işletmeleri kapsar. Atık üretim kapasitesi belirli eşiğin üzerindeki her tesis de bu kapsama girer.",
       },
       {
-        q: "Termal oteller ve kaplıca işletmeleri için çevre yükümlülükleri nelerdir?",
-        a: "Termal oteller; jeotermal akışkan deşarjı, havuz kimyasallarının atıksu yönetimi ve tesis kaynaklı atıklar açısından mevzuat kapsamındadır. Yıllık atık beyanı, tehlikeli madde beyanı ve gerekiyorsa çevre izni zorunludur.",
+        q: "Afyon ÇED danışmanlığı süreci nasıl ilerler?",
+        a: "Afyon ÇED danışmanlığında önce projenin ÇED Yönetmeliği'nin Ek-1 mi yoksa Ek-2 listesine mi girdiği belirlenir. Ek-1 kapsamındaki projeler için tam ÇED raporu hazırlanır ve Bakanlık incelemesi yürütülür. Ek-2 projeleri için ÇED Gerekli Değildir kararı alınır. ÇED Gerekli Değildir kararı genellikle 2–4 ay, ÇED raporu gerektiren projeler ise 6–18 ay arası sürmektedir. Nas Çevre bu sürecin tamamını koordine eder.",
       },
       {
-        q: "Afyonkarahisar'da ÇED süreci ne kadar sürer?",
-        a: "ÇED Gerekli Değildir kararı genellikle 2–4 ay, ÇED raporu gerektiren projeler için ise 6–18 ay arası değişen süreçler söz konusudur. Projenin kapsamı ve hazırlanan teknik belgelerin kalitesi süreci doğrudan etkiler.",
+        q: "Afyon çevre izin ve lisans başvurusu nasıl yapılır?",
+        a: "Afyon çevre izin ve lisans başvurusu E-ÇÖZÜM Çevre Bilgi Sistemi üzerinden yapılır. İşletmenin faaliyet türü ve kapasitesi belirlenerek Ek-1 veya Ek-2 sınıflandırması yapılır. Hava emisyonu, atıksu deşarjı ve gürültü gibi teknik parametreler için ölçüm raptorları hazırlanır ve sisteme yüklenir. Nas Çevre, Afyonkarahisar'daki işletmeler için bu sürecin başından sonuna kadar yönetir.",
       },
       {
-        q: "Afyonkarahisar'daki gıda tesisleri için atık yönetimi nasıl yapılandırılır?",
-        a: "Gıda tesisleri; organik atık, ambalaj atığı ve tehlikeli atık ayrıştırması yapmak zorundadır. Yıllık atık beyanı, lisanslı atık taşıyıcı ile sözleşme ve tehlikeli atık takip formu tutmak temel gereksinimlerdir.",
+        q: "Afyon atık yönetimi kapsamında gıda tesisleri için neler gereklidir?",
+        a: "Gıda üretim tesisleri; organik atık, ambalaj atığı ve tehlikeli atık (yağ, kimyasal) ayrıştırması yapmakla yükümlüdür. Yıllık atık beyanı Ocak–Mart döneminde Çevre Bilgi Sistemi üzerinden yapılır. Lisanslı atık taşıyıcı sözleşmesi, tehlikeli atık takip formu tutma ve gerekirse Sıfır Atık Belgesi alınması da bu sürecin parçasıdır. Nas Çevre tüm bu adımları sistematik biçimde yönetir.",
       },
       {
-        q: "Sıfır Atık Yönetmeliği Afyonkarahisar'daki işletmeleri nasıl etkiliyor?",
-        a: "Belirli kapasitenin üzerindeki işletmeler için Sıfır Atık Belgesi zorunlu tutulmuştur. Bu belge için atık ayrıştırma altyapısı kurulması, kayıt sistemi oluşturulması ve denetime hazır belge dosyası tutulması gerekir.",
+        q: "Mermer ve doğal taş işleme tesisleri için hangi çevre yükümlülükleri geçerlidir?",
+        a: "Mermer işleme ve taşocağı faaliyetleri için proje büyüklüğüne göre Afyon ÇED danışmanlığı kapsamında ÇED veya ÇED Gerekli Değildir kararı gerekir. Buna ek olarak çevre izni, toz emisyonu ve gürültü yönetimi için teknik önlemler, atık mermer çamuru yönetimi ile arazi rehabilitasyon planı zorunlu olabilir.",
+      },
+      {
+        q: "Afyonkarahisar sanayi tesisleri için çevre denetimlerine nasıl hazırlanılır?",
+        a: "Afyonkarahisar Çevre ve Şehircilik İl Müdürlüğü; rutin ve şikâyete dayalı denetimler gerçekleştirmektedir. Afyon çevre danışmanlığı kapsamında denetim hazırlığı; çevre izin belgelerinin güncelliği, atık takip formları, emisyon ölçüm raporları ve tehlikeli madde beyanlarının eksiksizliğini kapsar. Nas Çevre, Afyonkarahisar sanayi tesislerini denetim öncesinde kapsamlı biçimde hazırlar.",
+      },
+      {
+        q: "Tarım ve hayvancılık bağlantılı tesisler için hangi çevre süreçleri gereklidir?",
+        a: "Tarım ve hayvancılık bağlantılı tesisler; kapasite büyüklüğüne göre ÇED değerlendirmesi, atıksu arıtma veya deşarj standartları, organik gübre ve hayvan gübresi yönetim planı ile yıllık atık beyanı yükümlülükleri kapsamındadır. Afyon atık yönetimi hizmetlerimiz bu tesislere özel olarak yapılandırılmaktadır.",
       },
     ],
   },

@@ -19,20 +19,23 @@ const BUSINESS_TYPES = [
   "Diğer",
 ];
 
+const EMPTY_FORM = {
+  companyName: "",
+  contactName: "",
+  phone: "",
+  email: "",
+  city: "",
+  activityArea: "",
+  businessType: "",
+  service: "",
+  details: "",
+  kvkk: false,
+};
+
 export default function ApplicationForm() {
   const [formState, setFormState] = useState<FormState>("idle");
-  const [formData, setFormData] = useState({
-    companyName: "",
-    contactName: "",
-    phone: "",
-    email: "",
-    city: "",
-    activityArea: "",
-    businessType: "",
-    service: "",
-    details: "",
-    kvkk: false,
-  });
+  const [formData, setFormData] = useState({ ...EMPTY_FORM });
+  const [honeypot, setHoneypot] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -47,27 +50,32 @@ export default function ApplicationForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setFormState("sending");
+    console.log("Başvuru formu gönderiliyor", formData);
 
-    /*
-     * Entegrasyon noktası:
-     * Aşağıdaki bloğu Formspree, EmailJS veya kendi backend endpoint'iniz ile değiştirin.
-     *
-     * Formspree örneği:
-     *   const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-     *     method: "POST",
-     *     headers: { "Content-Type": "application/json" },
-     *     body: JSON.stringify(formData),
-     *   });
-     *   if (res.ok) setFormState("success"); else setFormState("error");
-     */
+    try {
+      const res = await fetch("/api/basvuru", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, _hp: honeypot }),
+      });
 
-    // Geçici simülasyon — entegrasyon eklendiğinde kaldırın
-    await new Promise((r) => setTimeout(r, 900));
-    setFormState("success");
+      console.log("API response", res.status);
+
+      if (res.ok) {
+        setFormState("success");
+        setFormData({ ...EMPTY_FORM });
+        setHoneypot("");
+      } else {
+        setFormState("error");
+      }
+    } catch (err) {
+      console.error("Başvuru fetch hatası:", err);
+      setFormState("error");
+    }
   };
 
   const inputCls =
-    "w-full px-4 py-2.5 text-sm text-[#1C1C1C] bg-white border border-[#E2E2E2] rounded focus:outline-none focus:border-[#E8620C] focus:ring-1 focus:ring-[#E8620C] transition-colors placeholder:text-[#C0C0C0]";
+    "w-full px-4 py-3 text-sm text-[#1C1C1C] bg-white border border-[#E2E2E2] rounded-md hover:border-[#C8C8C8] focus:outline-none focus:border-[#E8620C] focus:ring-2 focus:ring-[#E8620C]/20 transition-colors placeholder:text-[#BEBEBE]";
 
   if (formState === "success") {
     return (
@@ -91,10 +99,10 @@ export default function ApplicationForm() {
           Başvurunuz Alındı
         </h3>
         <p
-          className="text-[#4B4B4B] text-sm leading-relaxed max-w-[340px]"
+          className="text-[#4B4B4B] text-sm leading-relaxed max-w-[360px]"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          Ekibimiz en kısa sürede sizinle iletişime geçecektir. Teşekkür ederiz.
+          Başvurunuz alınmıştır. Ekibimiz en kısa sürede sizinle iletişime geçecektir.
         </p>
       </div>
     );
@@ -102,6 +110,17 @@ export default function ApplicationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+      {/* Honeypot — botlar için görünmez alan */}
+      <input
+        type="text"
+        name="_hp"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        aria-hidden="true"
+        autoComplete="off"
+        style={{ display: "none" }}
+      />
       {/* Satır 1 — Firma + Yetkili */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1.5">
@@ -283,8 +302,8 @@ export default function ApplicationForm() {
 
       {/* Hata mesajı */}
       {formState === "error" && (
-        <p className="text-red-600 text-xs" style={{ fontFamily: "Inter, sans-serif" }}>
-          Bir hata oluştu. Lütfen tekrar deneyin veya doğrudan iletişime geçin.
+        <p className="text-red-600 text-xs leading-relaxed" style={{ fontFamily: "Inter, sans-serif" }}>
+          Başvuru gönderilirken bir sorun oluştu. Lütfen tekrar deneyin veya doğrudan iletişim bilgilerimizden bize ulaşın.
         </p>
       )}
 
@@ -292,7 +311,7 @@ export default function ApplicationForm() {
       <button
         type="submit"
         disabled={formState === "sending"}
-        className="w-full sm:w-auto px-8 py-3 bg-[#E8620C] text-white text-sm font-semibold rounded hover:bg-[#CF5409] transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full sm:w-auto sm:min-w-[180px] px-8 py-3 bg-[#E8620C] text-white text-sm font-semibold rounded-md hover:bg-[#CF5409] active:bg-[#B84B08] transition-colors duration-150 disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ fontFamily: "Manrope, sans-serif" }}
       >
         {formState === "sending" ? "Gönderiliyor…" : "Başvuruyu Gönder"}
